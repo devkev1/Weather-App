@@ -9,12 +9,13 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&ap
     .then(response => response.json())
     .then(data => {
         const nameValue = data['name'];
-        const tempValue = data['main']['temp'];
         const descValue = data['weather'][0]['description'];
+        const tempValue = data['main']['temp'];
         
         name.innerHTML = nameValue;
-        temp.innerHTML = tempValue;
         desc.innerHTML = descValue;
+        temp.innerHTML = tempValue;
+        console.log(data);
     })
     .catch(err => alert("Wrong city name!"))
 })
@@ -24,3 +25,8 @@ inputValue.addEventListener("keyup", function enter(e) {
         submit();
     }
 })
+
+/* Farenheit or Celcius
+Images
+Save delete location area
+*/
