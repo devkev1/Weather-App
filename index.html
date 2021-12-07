@@ -10,14 +10,18 @@
 <body>
     <div class="input">
         <input type="text" class="inputValue" placeholder="Enter a city">
-        <input type="submit" class="button" value="Submit">
+        <div class="flex">
+            <span>
+                Toggle Celcius:
+            </span>    
+        <label class="switch">
+            <input class="checkbox" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        </div>
+    <input type="submit" class="button" value="Submit">
     </div>
-
-    <div class="display">
-        <h1 class="name"></h1>
-        <p class="desc"></p>
-        <p class="temp"></p>
-    </div>
+    <div class="display"></div>
     <script src="app.js"></script>
 </body>
 </html>

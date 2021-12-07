@@ -1,32 +1,51 @@
-const button = document.querySelector('.button');
-const inputValue = document.querySelector('.inputValue');
-const name = document.querySelector('.name');
-const desc = document.querySelector('.desc');
-const temp = document.querySelector('.temp');
+const button = document.querySelector(".button");
+const inputValue = document.querySelector(".inputValue");
+const checkbox = document.querySelector(".checkbox");
+const display = document.querySelector(".display");
+const cities = [];
 
-button.addEventListener('click', submit = () => {
-fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid=188d895134c8507cd1dacc245888d46e')
-    .then(response => response.json())
-    .then(data => {
-        const nameValue = data['name'];
-        const descValue = data['weather'][0]['description'];
-        const tempValue = data['main']['temp'];
-        
-        name.innerHTML = nameValue;
-        desc.innerHTML = descValue;
-        temp.innerHTML = tempValue;
+const submit = () => {
+    const unit = checkbox.checked ? "metric" : "imperial";
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+        inputValue.value +
+        "&appid=188d895134c8507cd1dacc245888d46e&units=" + unit
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        data.metric = checkbox.checked;
+        cities.push(data)
+        console.log(cities);
+        display.innerHTML = "";
+
+        for (let i = 0; i < cities.length; i++) {
+            
+            let div = document.createElement("div");
+            div.classList.add("card");
+            
+            const icon = document.createElement("img"); 
+            const name = document.createElement("h2");
+            const desc = document.createElement("p");
+            const temp = document.createElement("p");
+            
+            name.innerHTML = cities[i]["name"];
+            desc.innerHTML = cities[i]["weather"][0]["description"];
+            temp.innerHTML = cities[i]["main"]["temp"] + (cities[i].metric ? " C" : " F");
+            icon.src = [
+                "http://openweathermap.org/img/wn/" + cities[i]["weather"] [0] ["icon"] + ".png"];
+
+            div.append(name, desc, temp, icon);
+            display.prepend(div);
+        }
         console.log(data);
-    })
-    .catch(err => alert("Wrong city name!"))
-})
+      })
+      .catch((err) => console.log(err));
+  }
+
+button.addEventListener("click", submit)
 
 inputValue.addEventListener("keyup", function enter(e) {
-    if (e.keyCode == 13) {
-        submit();
-    }
-})
-
-/* Farenheit or Celcius
-Images
-Save delete location area
-*/
+  if (e.keyCode == 13) {
+    submit();
+  }
+});
