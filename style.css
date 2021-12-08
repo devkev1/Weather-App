@@ -6,7 +6,25 @@
 
 body {
     font-family: "Nunito", sans-serif;
-    background-color:skyblue;
+    background-image: url('weather_app_background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    /* background-color: skyblue; */
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+main {
+  background-color: rgba(0,0,0,.65);  
+  border-radius: 20px;
+  max-width: 650px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
 }
 
 .flex {
@@ -19,13 +37,14 @@ body {
 
 .input {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 20px;
     margin-bottom: 16px;
 }
 
-input[type="text"] {
+.city {
     height: 50px;
-    width: 600px;
+    width: 75%;
+    max-width: 600px;
     background: #e7e7e7;
     font-family: "Nunito", sans-serif;
     font-weight: bold;
@@ -35,7 +54,7 @@ input[type="text"] {
     padding: 10px 10px;
 }
 
-input[type="submit"] {
+.button {
     height: 50px;
     width: 100px;
     background: #e7e7e7;
@@ -43,7 +62,7 @@ input[type="submit"] {
     font-weight: bold;
     font-size: 20px;
     border: none;
-    border-radius: 2px;
+    border-radius: 20px;
     cursor: pointer;
     margin-top: 10px;
 }
@@ -94,7 +113,7 @@ input[type="submit"] {
   input:checked + .slider {
     background-color: #2196F3;
   }
-  
+
   input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);

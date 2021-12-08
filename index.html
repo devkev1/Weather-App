@@ -8,20 +8,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="input">
-        <input type="text" class="inputValue" placeholder="Enter a city">
-        <div class="flex">
-            <span>
-                Toggle Celcius:
-            </span>    
-        <label class="switch">
-            <input class="checkbox" type="checkbox">
-            <span class="slider round"></span>
-        </label>
+    <main>
+        <h1>Weather App</h1>
+        <div class="input">
+            <input type="text" class="city" placeholder="Enter a city or zip code">
+            <div class="flex">
+                <span>
+                    Units: <span id="unit">&deg;F</span>
+                </span>    
+            <label class="switch">
+                <input class="checkbox" type="checkbox" onclick="toggleUnit();">
+                <span class="slider round"></span>
+            </label>
+            </div>
+            <button type="submit" class="button">Submit</button>
         </div>
-    <input type="submit" class="button" value="Submit">
-    </div>
-    <div class="display"></div>
+        <div class="display"></div>
+    </main>
     <script src="app.js"></script>
 </body>
 </html>
