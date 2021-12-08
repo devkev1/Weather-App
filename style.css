@@ -4,16 +4,20 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%; 
+}
+
 body {
     font-family: "Nunito", sans-serif;
     background-image: url('weather_app_background.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto;
-    /* background-color: skyblue; */
+    background-size: cover;
     display: flex;
     justify-content: center;
     color: white;
+    align-items: flex-start; 
 }
 
 main {
