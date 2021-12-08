@@ -72,6 +72,5 @@ inputValue.addEventListener("keyup", (e) => {
   }
 });
 
-/* close card window 
+// close card window 
   
-  */
