@@ -53,7 +53,7 @@ const submit = () => {
             icon.src = [
                 "http://openweathermap.org/img/wn/" + cities[i]["weather"][0]["icon"] + ".png"];
 
-            div.append(name, desc, icon, temp, deleteButton, HR);
+            div.append(HR, name, desc, icon, temp, deleteButton);
             display.prepend(div);
         }
         console.log(data);
