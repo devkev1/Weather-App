@@ -35,7 +35,13 @@ const submit = () => {
             
             let div = document.createElement("div");
             div.classList.add("card");
+
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("delete-button");
+            deleteButton.innerText = "X";
             
+            const HR = document.createElement("HR");
+
             const icon = document.createElement("img"); 
             const name = document.createElement("h2");
             const desc = document.createElement("p");
@@ -47,7 +53,7 @@ const submit = () => {
             icon.src = [
                 "http://openweathermap.org/img/wn/" + cities[i]["weather"][0]["icon"] + ".png"];
 
-            div.append(name, desc, temp, icon);
+            div.append(name, desc, icon, temp, deleteButton, HR);
             display.prepend(div);
         }
         console.log(data);
