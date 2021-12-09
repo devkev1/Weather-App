@@ -56,6 +56,20 @@ const submit = () => {
             div.append(HR, name, desc, icon, temp, deleteButton);
             display.prepend(div);
         }
+
+        deleteButton.addEventListener("click", removeCard);
+
+        const removeCard = () => {
+          let display = document.querySelector("div");
+          display.removeChild(div);
+
+          let foundIndex = cities.findIndex((city) => {
+            return city.id == id;
+          });
+          if (foundIndex > - 1) {
+            cities.splice(foundIndex, 1);
+          }
+        }
         console.log(data);
       })
       .catch(() => alert("Something went wrong!"));
@@ -70,7 +84,7 @@ const toggleUnit = () => {
   }
 }
 
-button.addEventListener("click", submit)
+button.addEventListener("click", submit);
 
 inputValue.addEventListener("keyup", (e) => {
   if (e.keyCode == 13) {
