@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <main>
-        <h1>Weather App</h1>
-        <div class="input">
-            <input type="text" class="city" placeholder="Enter a city or zip code">
-            <div class="flex">
-                <span>
-                    Units: <span id="unit">&deg;F</span>
-                </span>    
-            <label class="switch">
-                <input class="checkbox" type="checkbox" onclick="toggleUnit();">
-                <span class="slider round"></span>
-            </label>
-            </div>
-            <button type="submit" class="button">Submit</button>
+      <h1>Weather App</h1>
+      <div class="input">
+        <input
+          type="text"
+          class="city"
+          placeholder="Enter a city or zip code"
+        />
+        <div class="flex">
+          <span> Units: <span id="unit">&deg;F</span> </span>
+          <label class="switch">
+            <input class="checkbox" type="checkbox" onclick="toggleUnit();" />
+            <span class="slider round"></span>
+          </label>
         </div>
-        <div class="display"></div>
+        <button type="submit" class="button">Submit</button>
+      </div>
+      <div class="display"></div>
     </main>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>

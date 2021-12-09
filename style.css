@@ -1,27 +1,23 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    height: 100%; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Nunito", sans-serif;
-    background-image: url('weather_app_background.png');
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    color: white;
-    align-items: flex-start; 
+  font-family: "Nunito", sans-serif;
+  background-image: url("weather_app_background.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  color: white;
+  align-items: flex-start;
 }
 
 main {
-  background-color: rgb(118, 118, 118);  
+  background-color: rgb(118, 118, 118);
   border-radius: 20px;
   max-width: 248px;
   min-width: 320px;
@@ -33,43 +29,43 @@ h1 {
 }
 
 .flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
 .input {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 16px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 16px;
 }
 
 .city {
-    height: 50px;
-    width: 75%;
-    max-width: 600px;
-    background: #e7e7e7;
-    font-family: "Nunito", sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    border: none;
-    border-radius: 2px;
-    padding: 10px 10px;
+  height: 50px;
+  width: 75%;
+  max-width: 600px;
+  background: #e7e7e7;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  border-radius: 2px;
+  padding: 10px 10px;
 }
 
 .button {
-    height: 50px;
-    width: 100px;
-    background: #e7e7e7;
-    font-family: "Nunito", sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-top: 10px;
+  height: 50px;
+  width: 100px;
+  background: #e7e7e7;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .delete-button {
@@ -80,62 +76,62 @@ h1 {
 }
 
 .display {
-    text-align: center;
+  text-align: center;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin: 0.5rem auto;
-    margin-top: 12px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0.5rem auto;
+  margin-top: 12px;
+}
 
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  .slider.round {
-    border-radius: 99px;
-  }
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-  .slider.round:before {
-    border-radius: 50%;
-  }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 99px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
