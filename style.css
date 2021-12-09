@@ -23,7 +23,8 @@ body {
 main {
   background-color: rgb(118, 118, 118);  
   border-radius: 20px;
-  max-width: 650px;
+  max-width: 248px;
+  min-width: 320px;
 }
 
 h1 {
