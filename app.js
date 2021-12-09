@@ -2,7 +2,9 @@ const button = document.querySelector(".button");
 const inputValue = document.querySelector(".city");
 const checkbox = document.querySelector(".checkbox");
 const display = document.querySelector(".display");
-const cities = [];
+const cities = JSON.parse(localStorage.getItem("cities")) || [];
+
+createCards();
 
 const submit = () => {
   const isCity = isNaN(inputValue.value);
@@ -24,54 +26,64 @@ const submit = () => {
       data.metric = checkbox.checked;
 
       if (data.cod === 200) {
+        data.timeStamp = new Date().toLocaleTimeString(); 
         cities.push(data);
       } else {
         throw Error;
       }
 
       display.innerHTML = "";
+      createCards();
 
-      for (let i = 0; i < cities.length; i++) {
-        let div = document.createElement("div");
-        div.classList.add("card");
-
-        const deleteButton = document.createElement("button");
-        deleteButton.classList.add("delete-button");
-        deleteButton.innerText = "X";
-
-        const HR = document.createElement("HR");
-
-        const icon = document.createElement("img");
-        const name = document.createElement("h2");
-        const desc = document.createElement("p");
-        const temp = document.createElement("p");
-
-        name.innerHTML = cities[i]["name"];
-        desc.innerHTML = cities[i]["weather"][0]["description"];
-        temp.innerHTML =
-          Math.round(cities[i]["main"]["temp"]) +
-          (cities[i].metric ? " &deg;C" : " &deg;F");
-        icon.src = [
-          "http://openweathermap.org/img/wn/" +
-            cities[i]["weather"][0]["icon"] +
-            ".png",
-        ];
-
-        div.append(HR, name, desc, icon, temp, deleteButton);
-        display.prepend(div);
-
-        const removeCard = (e) => {
-          let display = document.querySelector(".display");
-          display.removeChild(div);
-
-          cities.splice(i, 1);
-        };
-        deleteButton.addEventListener("click", removeCard);
-      }
+      localStorage.setItem("cities", JSON.stringify(cities));
       console.log(data);
     })
     .catch(() => alert("Something went wrong!"));
 };
+
+function createCards() {
+  for (let i = 0; i < cities.length; i++) {
+    let div = document.createElement("div");
+    div.classList.add("card");
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.innerText = "X";
+
+    const timeStamp = document.createElement("p");
+    timeStamp.innerText = cities[i].timeStamp;
+
+    const HR = document.createElement("HR");
+
+    const icon = document.createElement("img");
+    const name = document.createElement("h2");
+    const desc = document.createElement("p");
+    const temp = document.createElement("p");
+
+    name.innerHTML = cities[i]["name"];
+    desc.innerHTML = cities[i]["weather"][0]["description"];
+    temp.innerHTML =
+      Math.round(cities[i]["main"]["temp"]) +
+      (cities[i].metric ? " &deg;C" : " &deg;F");
+    icon.src = [
+      "http://openweathermap.org/img/wn/" +
+        cities[i]["weather"][0]["icon"] +
+        ".png",
+    ];
+
+    div.append(HR, name, desc, icon, temp, timeStamp, deleteButton);
+    display.prepend(div);
+
+    const removeCard = (e) => {
+      let display = document.querySelector(".display");
+      display.removeChild(div);
+
+      cities.splice(i, 1);
+      localStorage.setItem("cities", JSON.stringify(cities));
+    };
+    deleteButton.addEventListener("click", removeCard);
+  }
+}
 
 const toggleUnit = () => {
   const unit = document.getElementById("unit");
