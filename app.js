@@ -6,6 +6,43 @@ const cities = JSON.parse(localStorage.getItem("cities")) || [];
 
 createCards();
 
+const submit = async () => {
+  const isCity = isNaN(inputValue.value);
+  console.log(isCity ? "It's a city!" : "It's a zip code!");
+
+  const unit = checkbox.checked ? "metric" : "imperial";
+
+  let path = "https://api.openweathermap.org/data/2.5/weather?";
+  if (isCity) {
+    path += "q=";
+  } else {
+    path += "zip=";
+  }
+  path += `${inputValue.value}&appid=188d895134c8507cd1dacc245888d46e&units=${unit}`;
+  //`https://api.openweathermap.org/data/2.5/weather?q=${inputValue.value}&appid=188d895134c8507cd1dacc245888d46e&units=${unit}`
+  try {
+    let response = await fetch(path);
+    let data = await response.json();
+    data.metric = checkbox.checked;
+
+    if (data.cod === 200) {
+      data.timeStamp = new Date().toLocaleTimeString();
+      cities.push(data);
+    } else {
+      throw Error;
+    }
+
+    display.innerHTML = "";
+    createCards();
+
+    localStorage.setItem("cities", JSON.stringify(cities));
+    console.log(data);
+  } catch (err) {
+    alert("Something went wrong!");
+  }
+};
+
+/* Promise
 const submit = () => {
   const isCity = isNaN(inputValue.value);
   console.log(isCity ? "It's a city!" : "It's a zip code!");
@@ -39,7 +76,7 @@ const submit = () => {
       console.log(data);
     })
     .catch(() => alert("Something went wrong!"));
-};
+}; */
 
 function createCards() {
   for (let i = 0; i < cities.length; i++) {
