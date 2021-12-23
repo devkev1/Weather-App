@@ -5,7 +5,7 @@ const display = document.querySelector(".display");
 const cities = JSON.parse(localStorage.getItem("cities")) || [];
 
 const createCards = () => {
-  display.innerHTML = "";
+  display.innerText = "";
   for (let i = 0; i < cities.length; i++) {
     let div = document.createElement("div");
     div.classList.add("card");
@@ -25,8 +25,8 @@ const createCards = () => {
     const desc = document.createElement("p");
     const temp = document.createElement("p");
 
-    name.innerHTML = cities[i]["name"];
-    desc.innerHTML = cities[i]["weather"][0]["description"];
+    name.innerText = cities[i]["name"];
+    desc.innerText = cities[i]["weather"][0]["description"];
     temp.innerHTML =
       Math.round(cities[i]["main"]["temp"]) +
       (cities[i].metric ? " &deg;C" : " &deg;F");
