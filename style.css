@@ -139,3 +139,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.mt-3 {
+  margin-top: 6px;
+}

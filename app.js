@@ -17,6 +17,7 @@ const createCards = () => {
 
     const timeStamp = document.createElement("p");
     timeStamp.innerText = cities[i].timeStamp;
+    timeStamp.classList.add("mt-3");
 
     const HR = document.createElement("HR");
 
@@ -66,7 +67,7 @@ const submit = async () => {
       data.metric = checkbox.checked;
       cities.push(data);
     } else {
-      throw Error;
+      throw new Error("Status Code not 200.");
     }
 
     createCards();
