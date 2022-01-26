@@ -146,6 +146,6 @@ input:checked + .slider:before {
 
 @media (max-width: 768px) {
 .delete-button {
-  padding-left: 10px;
+  padding-left: 1px;
   }
 }
