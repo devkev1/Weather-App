@@ -2,7 +2,7 @@ const button = document.querySelector(".button");
 const inputValue = document.querySelector(".city");
 const checkbox = document.querySelector(".checkbox");
 const display = document.querySelector(".display");
-const cities = JSON.parse(localStorage.getItem("cities")) || [];
+let cities = JSON.parse(localStorage.getItem("cities")) || [];
 
 const createCards = () => {
   display.innerText = "";
@@ -13,7 +13,14 @@ const createCards = () => {
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-button");
     deleteButton.innerText = "X";
-    deleteButton.setAttribute("onclick", `removeCard(${i})`)
+    deleteButton.setAttribute("onclick", `removeCard(${i})`);
+
+    const refetchButton = document.createElement("button");
+    refetchButton.classList.add("delete-button");
+    refetchButton.innerText = "Update";
+    refetchButton.onclick = () => {
+      submit(cities[i].name);
+    };
 
     const timeStamp = document.createElement("p");
     timeStamp.innerText = cities[i].timeStamp;
@@ -37,16 +44,24 @@ const createCards = () => {
         ".png",
     ];
 
-    div.append(HR, name, desc, icon, temp, timeStamp, deleteButton);
+    div.append(
+      HR,
+      name,
+      desc,
+      icon,
+      temp,
+      timeStamp,
+      refetchButton,
+      deleteButton
+    );
     display.prepend(div);
   }
-}
+};
 
 createCards();
 
-const submit = async () => {
-  const isCity = isNaN(inputValue.value);
-  console.log(isCity ? "It's a city!" : "It's a zip code!");
+const submit = async (name) => {
+  const isCity = name || isNaN(inputValue.value);
 
   const unit = checkbox.checked ? "metric" : "imperial";
 
@@ -56,7 +71,9 @@ const submit = async () => {
   } else {
     path += "zip=";
   }
-  path += `${inputValue.value}&appid=188d895134c8507cd1dacc245888d46e&units=${unit}`;
+  path += `${
+    name || inputValue.value
+  }&appid=188d895134c8507cd1dacc245888d46e&units=${unit}`;
   //`https://api.openweathermap.org/data/2.5/weather?q=${inputValue.value}&appid=188d895134c8507cd1dacc245888d46e&units=${unit}`
   try {
     let response = await fetch(path);
@@ -65,7 +82,17 @@ const submit = async () => {
     if (data.cod === 200) {
       data.timeStamp = new Date().toLocaleTimeString();
       data.metric = checkbox.checked;
-      cities.push(data);
+      if (name) {
+        cities = cities.map((city) => {
+          if (city.name == name) {
+            return data;
+          } else {
+            return city;
+          }
+        });
+      } else {
+        cities.push(data);
+      }
     } else {
       throw new Error("Status Code not 200.");
     }
@@ -73,7 +100,6 @@ const submit = async () => {
     createCards();
 
     localStorage.setItem("cities", JSON.stringify(cities));
-    console.log(data);
   } catch (err) {
     alert("Something went wrong!");
   }
