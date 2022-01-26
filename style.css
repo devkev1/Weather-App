@@ -144,8 +144,32 @@ input:checked + .slider:before {
   margin-top: 4px;
 }
 
-@media (max-width: 768px) {
-.delete-button {
-  padding-left: 1px;
+@media (max-width: 876px) {
+  .delete-button {
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 393px) {
+  .delete-button {
+    padding-left: 1px;
+  }
+}
+
+@media (max-width: 390px) {
+  .delete-button {
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 375px) {
+  .delete-button {
+    padding-left: 1px;
+  }
+}
+
+@media (max-width: 360px) {
+  .delete-button {
+    padding-left: 0px;
   }
 }
