@@ -120,10 +120,10 @@ const toggleUnit = () => {
   }
 };
 
-button.addEventListener("click", submit);
+button.addEventListener("click", () => submit(""));
 
 inputValue.addEventListener("keyup", (e) => {
   if (e.keyCode == 13) {
-    submit();
+    submit("");
   }
 });
